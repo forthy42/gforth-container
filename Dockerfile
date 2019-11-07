@@ -12,7 +12,7 @@ RUN adduser -D gforth \
     && rm /tmp/gforth.tar.xz \
     && cd /tmp/gforth-* \
     && apk add --no-cache --virtual .build-deps freetype-dev \
-        build-base automake m4 libtool git \
+        build-base autoconf automake m4 libtool git \
         coreutils gcc libffi-dev mesa-gles mesa-dev libx11-dev \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
     && ./install-swig.sh --prefix=/usr --exec-prefix=/usr \
