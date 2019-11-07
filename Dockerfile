@@ -15,7 +15,7 @@ RUN adduser -D gforth \
         build-base autoconf automake m4 libtool git \
         coreutils gcc libffi-dev mesa-gles mesa-dev libx11-dev \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
-	yodl bison libpcre3-dev libboost-dev \
+	bison pcre-dev boost-dev \
     && ./install-swig.sh --prefix=/usr --exec-prefix=/usr \
     && ./install-freetype-gl.sh --prefix=/usr --exec-prefix=/usr \
     && ./configure --prefix=/usr --exec-prefix=/usr \
