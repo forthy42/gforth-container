@@ -1,8 +1,8 @@
-FROM alpine:3.9
-LABEL maintainer="Matthias Trute <mtrute@web.de>"
+FROM alpine:latest
+LABEL maintainer="Bernd Paysan <bernd@net2o.de>"
 ENV LANG C.UTF-8
 
-ENV VERSION 0.7.9_20190627
+ENV VERSION 0.7.9_20191107
 
 RUN adduser -D gforth \
     && apk add --no-cache libltdl libffi \
@@ -13,8 +13,10 @@ RUN adduser -D gforth \
     && cd /tmp/gforth-* \
     && apk add --no-cache --virtual .build-deps freetype-dev \
         build-base m4 libtool \
-        coreutils gcc swig libffi-dev mesa-gles mesa-dev libx11-dev \
+        coreutils gcc libffi-dev mesa-gles mesa-dev libx11-dev \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
+    && ./install-swig.sh --prefix=/usr --exec-prefix=/usr \
+    && ./install-freetype-gl.sh --prefix=/usr --exec-prefix=/usr \
     && ./configure --prefix=/usr --exec-prefix=/usr \
     && make  \
     && make install -i \
