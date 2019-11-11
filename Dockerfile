@@ -17,7 +17,11 @@ RUN adduser -D gforth \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
 	bison pcre-dev boost-dev \
     && ./install-swig.sh --prefix=/usr --exec-prefix=/usr \
+    && wget http://sourceforge.net/projects/premake/files/Premake/4.4/premake-4.4-beta5-linux.tar.gz/download -O /tmp/premake4.tar.gz \
+    && tar zxvf /tmp/premake4.tar.gz -C /usr/bin \
+    && rm /tmp/premake4.tar.gz \
     && ./install-freetype-gl.sh --prefix=/usr --exec-prefix=/usr \
+    && rm /usr/bin/premake4 \
     && ./configure --prefix=/usr --exec-prefix=/usr \
     && make  \
     && make install -i \
