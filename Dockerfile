@@ -15,11 +15,11 @@ RUN adduser -D gforth \
         build-base autoconf automake m4 libtool git \
         coreutils gcc libffi-dev mesa-gles mesa-dev libx11-dev \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
-	bison pcre-dev boost-dev \
+	bison pcre-dev boost-dev unzip \
     && ./install-swig.sh --prefix=/usr --exec-prefix=/usr \
-    && wget http://sourceforge.net/projects/premake/files/Premake/4.4/premake-4.4-beta5-linux.tar.gz/download -O /tmp/premake4.tar.gz \
-    && tar zxvf /tmp/premake4.tar.gz -C /usr/bin \
-    && rm /tmp/premake4.tar.gz \
+    && wget http://sourceforge.net/projects/premake/files/Premake/4.4/premake-4.4-beta5-src.zip/download -O /tmp/premake4.zip \
+    && (cd /tmp; unzip premake4.zip; rm premake4.zip) \
+    && (cd /tmp/premake-4.*; (cd build/gmake.unix; make); cp bin/release/premake4 /usr/bin; cd /tmp; rm -rf premake-4.*) \
     && ./install-freetype-gl.sh --prefix=/usr --exec-prefix=/usr \
     && rm /usr/bin/premake4 \
     && ./configure --prefix=/usr --exec-prefix=/usr \
