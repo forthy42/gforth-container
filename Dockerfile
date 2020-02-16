@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL maintainer="Bernd Paysan <bernd@net2o.de>"
 ENV LANG C.UTF-8
 
-ENV VERSION 0.7.9_20200206
+ENV VERSION 0.7.9_20200213
 
 RUN adduser -D gforth \
     && apk add --no-cache libltdl libffi \
