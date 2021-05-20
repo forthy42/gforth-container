@@ -16,8 +16,10 @@ RUN adduser -D gforth \
         coreutils gcc libffi-dev mesa-gles mesa-dev glew-dev libx11-dev \
         glfw-dev harfbuzz-dev gstreamer-dev gst-plugins-base-dev \
 	bison pcre-dev boost-dev opus-dev pulseaudio-dev unzip
-RUN ./install-swig.sh --prefix=/usr --exec-prefix=/usr && rm -rf swig
-RUN ./configure --prefix=/usr --exec-prefix=/usr \
+RUN cd /tmp/gforth-* \
+    && ./install-swig.sh --prefix=/usr --exec-prefix=/usr && rm -rf swig
+RUN cd /tmp/gforth-* \
+    && ./configure --prefix=/usr --exec-prefix=/usr \
     && make  \
     && make install -i \
     && cd /tmp && rm -rf gforth-* \
